@@ -24,39 +24,18 @@
 #leo el archivo
 
 library(readr)
-xaa_0 <- read_csv("~/Documents/scripts/RIPS_2013_1/splitDx/1219.csv", 
+xaa_0 <- read_csv("~/Documents/scripts/RIPS_2013_1/splitDx/1499.csv", 
                       col_types = cols(
                         DxPrincipal=col_skip(),
                         RegimenAdministradoraDesc=col_factor(c("3", "2")),
                         FinalidadProcedimientosCD=col_factor(c("1","2")),
                         TipoUsuarioCD=col_factor(c("2","1")),
                         AmbitosProcedimientoCD=col_factor(c("2","0","1")),
-                        CodigoProcedimiento=col_factor(c("123",
-                                                         "1434",
-                                                         "1435",
-                                                         "1458",
-                                                         "1671",
-                                                         "1678",
-                                                         "1695",
-                                                         "1775",
-                                                         "1902",
-                                                         "1924",
-                                                         "2137",
-                                                         "2343",
-                                                         "2622",
-                                                         "2772",
-                                                         "2775",
-                                                         "2776",
-                                                         "2795",
-                                                         "2796",
-                                                         "2797",
-                                                         "2798",
-                                                         "2801",
-                                                         "2803",
-                                                         "2811",
-                                                         "2824")),
+                        CodigoProcedimiento=col_factor(c(3345, 3302, 3335, 3329, 2086, 2340, 3337, 3330, 3307, 2112, 3331,
+                                                         2806, 2362, 2588, 2201, 1847, 2093, 3125,  155, 1820, 1819, 3332,
+                                                         3358, 3305)),
                         Edad=col_integer(),
-                        SexoDesc=col_factor(c("2","0","1","3"))))
+                        SexoDesc=col_factor(c("0","1"))))
 xaa<-na.omit(xaa_0)
 xaa<-data.frame(xaa)
  
@@ -93,6 +72,6 @@ library("randomForest")
 rf<-randomForest(CodigoProcedimiento~.,data=xaa,
                   do.trace=100, ntree=100)
 print(rf)
-library(pmml)
-tree.xml<-pmml(rf)
-saveXML(tree.xml,file="~/Documents/scripts/RIPStreeDx1219.xml")
+#library(pmml)
+#tree.xml<-pmml(rf)
+#saveXML(tree.xml,file="~/Documents/scripts/RIPStreeDx1219.xml")
